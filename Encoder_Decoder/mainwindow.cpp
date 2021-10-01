@@ -2,6 +2,9 @@
 #include "ui_mainwindow.h"
 #include <vector>
 
+int OneTimePad::offset;
+OneTimePad* OneTimePad::otpInstance;
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -21,7 +24,8 @@ void MainWindow::on_encodeButton_clicked()
 
     //vec.push_back(new PalindromeCoder());
     //vec.push_back(new LegacyCoder());
-    vec.push_back(new CaesarCoder(5));
+    //vec.push_back(new CaesarCoder(5));
+    vec.push_back(OneTimePad::getInstance());
 
     std::wstring text = ui->textEdit->toPlainText().toStdWString().c_str();
 
@@ -38,7 +42,8 @@ void MainWindow::on_decodeButton_clicked()
     std::vector<CoderStrategy*> vec;
 
    // vec.push_back(new PalindromeCoder());
-    vec.push_back(new CaesarCoder(5));
+    //vec.push_back(new CaesarCoder(5));
+    vec.push_back(OneTimePad::getInstance());
 
     std::wstring text = ui->textEdit_2->toPlainText().toStdWString().c_str();
 

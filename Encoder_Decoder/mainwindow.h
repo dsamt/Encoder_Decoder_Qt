@@ -6,6 +6,7 @@
 #include "PalindromeCoder.h"
 #include "LegacyCoder.h"
 #include "Caesarcoder.h"
+#include "OneTimePadCoder.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

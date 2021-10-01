@@ -41,7 +41,7 @@ public:
                 result.push_back(ptext[i]);
             }
             */
-            result.push_back(ptext[i] + offset);
+            result.push_back(ptext[i] + offset % 95);
         }
         return result;
     }
@@ -50,7 +50,7 @@ public:
         //offset = 26 - offset;
         std::wstring result;
         for (size_t i=0; i < ctext.size(); i++){
-            result.push_back(ctext[i] - offset);
+            result.push_back(ctext[i] - offset % 95);
         }
         return result;
     }
