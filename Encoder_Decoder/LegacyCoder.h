@@ -16,17 +16,26 @@ public:
     }
 
     std::wstring encode(std::wstring ptext)
-    {/*
+    {
        std::wstring result;
-       int* result1 = roman->texttodigits((char*)ptext.c_str(), ptext.size());
-       char* result2 = roman->digitstoRoman(result1, ptext.size());
-       result = result2.toStdWString();
-       return result;*/
-        return ptext;
+
+       //char result2[512];
+
+
+        for (int i = 0; i < ptext.length(); i++){
+            //strcpy_s(result2, sizeof(result2), roman->digitstoRoman(result1, ptext.size())[i]);
+            int* result1 = roman->texttodigits((char*)&ptext[i], 1);
+            result.push_back(roman->digitstoRoman(result1, 1)[i]);
+        }
+        return result;
     }
     std::wstring decode(std::wstring ctext)
     {
-        return ctext;
+        std::wstring result;
+        for (int i = 0; i < ctext.length(); i++){
+            result.push_back((wchar_t)(roman->digitsfromRoman((char*)&ctext[i], ctext.length())));
+        }
+        return result;
     }
 };
 
