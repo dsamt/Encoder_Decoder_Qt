@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <vector>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -11,5 +12,38 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+
+void MainWindow::on_encodeButton_clicked()
+{
+    std::vector<CoderStrategy*> vec;
+
+    //vec.push_back(new PalindromeCoder());
+    //vec.push_back(new LegacyCoder());
+    vec.push_back(new CaesarCoder(5));
+
+    std::wstring text = ui->textEdit->toPlainText().toStdWString().c_str();
+
+    for (size_t i = 0; i < vec.size(); i++){
+         ui->textEdit_2->setText(QString::fromStdWString(vec.at(i)->encode(text)));
+         //ui->textEdit_2->setText(QString::fromStdWString(text));
+    }
+
+}
+
+
+void MainWindow::on_decodeButton_clicked()
+{
+    std::vector<CoderStrategy*> vec;
+
+   // vec.push_back(new PalindromeCoder());
+    vec.push_back(new CaesarCoder(5));
+
+    std::wstring text = ui->textEdit_2->toPlainText().toStdWString().c_str();
+
+    for (size_t i = 0; i < vec.size(); i++){
+        ui->textEdit_3->setText(QString::fromStdWString(vec.at(i)->decode(text)));
+    }
 }
 

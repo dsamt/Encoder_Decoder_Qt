@@ -13,8 +13,10 @@ SOURCES += \
     mainwindow.cpp
 
 HEADERS += \
+    Caesarcoder.h \
     CoderStrategy.h \
     LegacyCoder.h \
+    OneTimePadCoder.h \
     PalindromeCoder.h \
     RomanConverter.h \
     mainwindow.h

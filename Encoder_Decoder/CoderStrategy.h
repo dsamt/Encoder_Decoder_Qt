@@ -7,6 +7,7 @@
 class CoderStrategy{
 public:
     virtual std::wstring encode(std::wstring ptext) = 0;
+    virtual std::wstring decode(std::wstring ctext) = 0;
 
 };
 
